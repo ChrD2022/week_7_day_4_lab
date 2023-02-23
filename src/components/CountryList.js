@@ -8,12 +8,12 @@ const CountryList = ({countries}) => {
     });
     
     return(
-        <>
+        <div>
         <h3>CountryListJS</h3>
         <ul>
             {countryItems}
         </ul>
-        </>
+        </div>
     );
 };
 
