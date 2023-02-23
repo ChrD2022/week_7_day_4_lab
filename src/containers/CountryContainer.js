@@ -1,8 +1,11 @@
 import React, { useState, useEffect} from 'react';
 import CountryList from '../components/CountryList';
+import CountryDetails from '../components/CountryDetails';
+import CountrySelector from '../components/CountrySelector';
 
 const CountryContainer = () => {
     const [countries, setCountries] = useState([]);
+    const [selectedCountry, setSelectedCountry] = useState(null);
 
     useEffect(() => {
         loadCountries()
@@ -14,10 +17,19 @@ const CountryContainer = () => {
         .then(countries => setCountries(countries))
     };
 
+    const onCountryClicked = function(country){
+        setSelectedCountry(country)
+    }
+
+    const onCountrySelected = (country) => {
+        setSelectedCountry(country)
+    };
+
     return(
         <div>
-        <h2>CountryContainerJS</h2>
-        <CountryList countries={countries}/>
+        {countries.length > 0 ? <CountrySelector countries={countries} onCountrySelected={onCountrySelected}/> : null}
+        {selectedCountry ? <CountryDetails country={selectedCountry}/> : null}
+        <CountryList countries={countries} onCountryClicked={onCountryClicked}/>
         </div>
     )
 };

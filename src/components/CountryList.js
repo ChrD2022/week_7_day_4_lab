@@ -9,8 +9,7 @@ const CountryList = ({countries}) => {
     
     return(
         <div>
-        <h3>CountryListJS</h3>
-        <ul>
+        <ul className="list-style">
             {countryItems}
         </ul>
         </div>
